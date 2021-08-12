@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--STYLESHEETS-->
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Search for your favorite food</title>
+  </head>
+  <body class="search-body">
+    <div class="darken-background"></div>
+    <div class="popup-box">
+      <img src="/img/search page design.webp" alt="" class="foodImage">
+      <aside class="foodHeroSection">
+        <a href="" onclick="hideFoodCard()" class="close-button">
+          <img src="/img/close-icon.svg" alt="">
+        </a>
+        <h4 class="food-title"><%= foodTitle %></h4>
+        <p class="food-type"><%= foodType %></p>
+        <p class="time-to-cook-food"><%= timeToCookFood %></p>
+      </aside>
+      <div class="detailedInfo">
+        <h5>Summary</h5>
+        <p><%- foodSummary %></p>
+      </div>
+    </div>
+    <div class="logo">
+      <img src="/img/logo.svg" alt="" />
+    </div>
+    <form action="/search.ejs" method="POST" class="search-bar-form">
+      <input type="text" name="searchFood" placeholder="Search..." />
+      <button type="submit">
+        <img src="/img/search-icon.svg" alt="" />
+      </button>
+    </form>
+    <sidebar class="filter-bar">
+      <p>Refine your search with the following parameters</p>
+        <div class="filter-items">
+      <div class="filter-item">
+        <label for="maxCarbs">Maximum amount of carbohydrates in grams: <span id="carbohydratesValue"></span></label>
+        <input
+          type="range"
+          id="maxCarbs"
+          name="maxCarbs"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxCarbs', 'carbohydratesValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxProtein">Maximum amount of protein in grams: <span id="proteinValue"></span></label>
+        <input
+          type="range"
+          id="maxProtein"
+          name="maxProtein"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxProtein', 'proteinValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxCalories">Maximum amount of calories: <span id="caloriesValue"></span></label>
+        <input
+          type="range"
+          id="maxCalories"
+          name="maxCalories"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxCalories', 'caloriesValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxFat">Maximum amount of fat in grams: <span id="fatValue"></span></label>
+        <input
+          type="range"
+          id="maxFat"
+          name="maxFat"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxFat', 'fatValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxAlcohol">Maximum amount of alcohol in grams: <span id="alcoholValue"></span></label>
+        <input
+          type="range"
+          id="maxAlcohol"
+          name="maxAlcohol"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxAlcohol', 'alcoholValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxCholesterol"
+          >Maximum amount of cholesterol in grams: <span id="cholesterolValue"></span></label>
+        <input
+          type="range"
+          id="maxCholesterol"
+          name="maxCholesterol"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxCholesterol', 'cholesterolValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxSugar">Maximum amount of sugar in grams: <span id="sugarValue"></span></label>
+        <input
+          type="range"
+          id="maxSugar"
+          name="maxSugar"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxSugar', 'sugarValue')"
+        />
+      </div>
+
+      <div class="filter-item">
+        <label for="maxCaffeine">Maximum amount of caffeine in grams: <span id="caffeineValue"></span></label>
+        <input
+          type="range"
+          id="maxCaffeine"
+          name="maxCaffeine"
+          min="0"
+          max="1000"
+          class="slider"
+          oninput="updateSliderValue('maxCaffeine', 'caffeineValue')"
+        />
+      </div>
+    </div>
+    </sidebar>
+    <main class="search-result-main">
+      <div class="result-intro">
+        <h3>Recommended</h3>
+      </div>
+      <div class="results-cards-container">
+        <% for (let i = 0; i < recommendedResultNumber; i++) { %>
+        <a href="#" onclick="displayFoodCard()">
+          <div class="results-card">
+            <div class="food-image">
+              <img src="/img/search page design.webp" alt="" />
+            </div>
+            <div class="food-card-details">
+              <h4 class="food-title"><%= foodTitle %></h4>
+              <p class="food-type"><%= foodType %></p>
+              <p class="time-to-cook-food"><%= timeToCookFood %></p>
+            </div>
+          </div>
+        </a>
+        <%} %>
+      </div>
+    </main>
+
+    <script src="/js/search.js"></script>
+  </body>
+</html>
