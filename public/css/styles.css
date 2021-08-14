@@ -117,6 +117,14 @@ p {
           box-shadow: 10px 10px 30px rgba(255, 102, 0, 0.1);
 }
 
+.truncate {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* MAIN PAGE */
@@ -470,28 +478,47 @@ p {
 
 .search-body .popup-box {
   display: none;
-  position: absolute;
+  position: fixed;
+  top: 0px;
+  left: calc((100% - 700px) / 2);
   -ms-grid-column-align: center;
       justify-self: center;
+  padding-right: 15px;
+  padding-bottom: 15px;
   width: 700px;
+  height: 100vh;
+  overflow: auto;
   z-index: 101;
   background-color: #f4ede6;
   border-radius: 15px;
   -ms-grid-columns: max-content 1fr;
       grid-template-columns: -webkit-max-content 1fr;
       grid-template-columns: max-content 1fr;
-  -ms-grid-rows: (max-content)[2];
-      grid-template-rows: repeat(2, -webkit-max-content);
-      grid-template-rows: repeat(2, max-content);
-      grid-template-areas: "foodImage foodHeroSection" "detailedInfo detailedInfo";
+  -ms-grid-rows: (max-content)[3];
+      grid-template-rows: repeat(3, -webkit-max-content);
+      grid-template-rows: repeat(3, max-content);
+      grid-template-areas: "foodImage foodHeroSection" "detailedInfo detailedInfo" ". full-display";
+}
+
+.search-body .popup-box .full-display {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: full-display;
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.search-body .popup-box .full-display img {
+  width: 20px;
+  height: auto;
 }
 
 .search-body .popup-box .foodImage {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: foodImage;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: auto;
   border-top-left-radius: 15px;
 }
 
@@ -499,7 +526,7 @@ p {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: foodHeroSection;
-  padding: 15px 15px 0;
+  padding: 15px 0 0 15px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2] max-content;
@@ -517,8 +544,8 @@ p {
 }
 
 .search-body .popup-box .foodHeroSection .close-button img {
-  height: 20px;
-  width: auto;
+  width: 20px;
+  height: auto;
 }
 
 .search-body .popup-box .foodHeroSection .food-title {
@@ -546,11 +573,60 @@ p {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: detailedInfo;
+  padding: 30px 20px 0;
+}
+
+.search-body .popup-box .detailedInfo .foodSummaryDiv .toggleTruncateClick {
+  color: #e47907;
+}
+
+.search-body .popup-box .detailedInfo .foodIngredients {
+  margin-top: 30px;
+}
+
+.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (150px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 150px);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  grid-auto-flow: row;
+  gap: 10px;
+}
+
+.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList .ingredientsListItem img {
+  width: 150px;
+  height: auto;
 }
 
 .search-body .popup-box-appear {
   display: -ms-grid;
   display: grid;
+}
+
+.search-body .cardDisplayFull {
+  width: 100%;
+  left: 0;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 0;
+  padding-right: 50px;
+  padding-bottom: 30px;
+}
+
+.search-body .cardDisplayFull .foodImage {
+  border-radius: 0;
+}
+
+.search-body .cardDisplayFull .foodHeroSection {
+  padding: 15px 0 0 50px;
+}
+
+.search-body .cardDisplayFull .detailedInfo {
+  padding: 30px 20px 0 50px;
 }
 
 .search-body .logo {

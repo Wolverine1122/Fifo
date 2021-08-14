@@ -121,6 +121,14 @@ p {
   }
 }
 
+.truncate {
+  -webkit-line-clamp: 3;
+ -webkit-box-orient: vertical;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* MAIN PAGE */
@@ -390,26 +398,41 @@ p {
 
   .popup-box {
     display: none;  // needs to change to grid once it appears
-    position: absolute;
+    position: fixed;
+    top: 0px;
+    left: calc((100% - 700px) / 2); //fix Chrome bug with fixed position
     justify-self: center;
+    padding-right: 15px;
+    padding-bottom: 15px;
     width: 700px;
+    height: 100vh;
+    overflow: auto;
     z-index: 101;
     background-color: $milky-white;
     border-radius: 15px;
     grid-template-columns: max-content 1fr;
-    grid-template-rows: repeat(2, max-content);
+    grid-template-rows: repeat(3, max-content);
     grid-template-areas: "foodImage foodHeroSection"
-                         "detailedInfo detailedInfo";
+                         "detailedInfo detailedInfo"
+                         ". full-display";
 
+    .full-display {
+      grid-area: full-display;
+      justify-self: end;
+      img {
+        width: 20px;
+        height: auto;
+      }
+    }
     .foodImage {
       grid-area: foodImage;
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: auto;
       border-top-left-radius: 15px;
     }
     .foodHeroSection {
       grid-area: foodHeroSection;
-      padding: 15px 15px 0;
+      padding: 15px 0 0 15px;
       display: grid;
       grid-template-columns: repeat(2, 1fr) max-content;
       grid-template-areas: ". . close-button"
@@ -420,8 +443,8 @@ p {
         grid-area: close-button;
         justify-self: end;
         img {
-          height: 20px;
-          width: auto;
+          width: 20px;
+          height: auto;
         }
       }
 
@@ -440,11 +463,55 @@ p {
     }
     .detailedInfo {
       grid-area: detailedInfo;
+      padding: 30px 20px 0;
+
+      .foodSummaryDiv {
+        .toggleTruncateClick {
+          color: $orange;
+        }
+      }
+
+      .foodIngredients {
+        margin-top: 30px;
+        .ingredientsList {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 150px);
+          justify-content: space-between;
+          grid-auto-flow: row;
+          gap: 10px;
+          .ingredientsListItem {
+            img {
+              width: 150px;
+              height: auto;
+            }
+          }
+        }
+      }
     }
   }
 
   .popup-box-appear {
     display: grid;
+  }
+
+  .cardDisplayFull {
+    width: 100%;
+    left: 0;
+    height: max-content;
+    border-radius: 0;
+    padding-right: 50px;
+    padding-bottom: 30px;
+
+    .foodImage {
+      border-radius: 0;
+    }
+
+    .foodHeroSection {
+      padding: 15px 0 0 50px;
+    }
+    .detailedInfo {
+      padding: 30px 20px 0 50px;
+    }
   }
 
   .logo {

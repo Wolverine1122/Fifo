@@ -21,7 +21,7 @@
   <body class="search-body">
     <div class="darken-background"></div>
     <div class="popup-box">
-      <img src="/img/search page design.webp" alt="" class="foodImage">
+      <img src="/img/example-image.jpg" alt="" class="foodImage">
       <aside class="foodHeroSection">
         <a href="" onclick="hideFoodCard()" class="close-button">
           <img src="/img/close-icon.svg" alt="">
@@ -31,14 +31,34 @@
         <p class="time-to-cook-food"><%= timeToCookFood %></p>
       </aside>
       <div class="detailedInfo">
-        <h5>Summary</h5>
-        <p><%- foodSummary %></p>
+        <div class="foodSummaryDiv">
+          <h5>Summary</h5> 
+          <p class="foodSummary"> <%- foodSummary %>  </p>
+          <a href="#" onclick="truncateParagraph('foodSummary')" class="toggleTruncateClick"></a>
+        </div>
+        <div class="foodIngredients">
+          <h5>Ingredients</h5>
+          <div class="ingredientsList">
+            <% for (let j=0; j < ingredientsListItemsNumber; j++) {%>
+                <div class="ingredientsListItem">
+                  <p><%= ingredientsListItemName %></p>
+                  <img src="/img/example-image.jpg" alt="">
+                </div>
+            <% } %>  
+          </div>
+        </div>
+      </div>
+      <div class="full-display">
+        <a href="#" onclick="changeCardDisplayDimension()"><img src="/img/full-display-icon.svg" alt=""></a>
       </div>
     </div>
+
+
+
     <div class="logo">
       <img src="/img/logo.svg" alt="" />
     </div>
-    <form action="/search.ejs" method="POST" class="search-bar-form">
+    <form action="/search.html" method="POST" class="search-bar-form">
       <input type="text" name="searchFood" placeholder="Search..." />
       <button type="submit">
         <img src="/img/search-icon.svg" alt="" />
@@ -175,6 +195,8 @@
       </div>
     </main>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/search.js"></script>
+    <script src="/js/vendor/jquery.nicescroll.js"></script>
   </body>
 </html>
