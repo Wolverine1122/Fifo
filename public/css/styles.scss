@@ -426,8 +426,8 @@ p {
     }
     .foodImage {
       grid-area: foodImage;
-      width: 200px;
-      height: auto;
+      height: 200px;
+      width: auto;
       border-top-left-radius: 15px;
     }
     .foodHeroSection {
@@ -479,8 +479,24 @@ p {
           justify-content: space-between;
           grid-auto-flow: row;
           gap: 10px;
+
           .ingredientsListItem {
-            img {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: "ingredientsListItemName ingredientsListItemQuantity"
+                                  "ingredientsListItemPic ingredientsListItemPic";
+            
+            .ingredientsListItemName {
+              grid-area: ingredientsListItemName;
+            }
+
+            .ingredientsListItemQuantity {
+              grid-area: ingredientsListItemQuantity;
+              justify-self: end;
+            }
+
+            .ingredientsListItemPic {
+              grid-area: ingredientsListItemPic;
               width: 150px;
               height: auto;
             }
@@ -496,8 +512,8 @@ p {
 
   .cardDisplayFull {
     width: 100%;
+    height: 100vh;
     left: 0;
-    height: max-content;
     border-radius: 0;
     padding-right: 50px;
     padding-bottom: 30px;

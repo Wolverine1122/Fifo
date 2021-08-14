@@ -6,6 +6,7 @@ const { send } = require("process");
 
 const recommendedResultNumber = 9;
 const ingredientsListItemsNumber = 6;
+const ingredientsListItemQuantity = "5 cups"
 
 const app = express()
 
@@ -28,7 +29,8 @@ app.get("/search.html", (req, res) => {
         timeToCookFood: "15 minutes",
         ingredientsListItemName: "Cake",
         recommendedResultNumber,
-        ingredientsListItemsNumber
+        ingredientsListItemsNumber,
+        ingredientsListItemQuantity
     })
 })
 

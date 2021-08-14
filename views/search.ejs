@@ -41,8 +41,9 @@
           <div class="ingredientsList">
             <% for (let j=0; j < ingredientsListItemsNumber; j++) {%>
                 <div class="ingredientsListItem">
-                  <p><%= ingredientsListItemName %></p>
-                  <img src="/img/example-image.jpg" alt="">
+                  <p class="ingredientsListItemName"><%= ingredientsListItemName %></p>
+                  <p class="ingredientsListItemQuantity"><%= ingredientsListItemQuantity %> </p>
+                  <img src="/img/example-image.jpg" alt="" class="ingredientsListItemPic">
                 </div>
             <% } %>  
           </div>
@@ -52,11 +53,8 @@
         <a href="#" onclick="changeCardDisplayDimension()"><img src="/img/full-display-icon.svg" alt=""></a>
       </div>
     </div>
-
-
-
     <div class="logo">
-      <img src="/img/logo.svg" alt="" />
+      <a href="/"><img src="/img/logo.svg" alt="" /></a>
     </div>
     <form action="/search.html" method="POST" class="search-bar-form">
       <input type="text" name="searchFood" placeholder="Search..." />

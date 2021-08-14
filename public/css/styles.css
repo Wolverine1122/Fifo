@@ -517,8 +517,8 @@ p {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: foodImage;
-  width: 200px;
-  height: auto;
+  height: 200px;
+  width: auto;
   border-top-left-radius: 15px;
 }
 
@@ -596,7 +596,33 @@ p {
   gap: 10px;
 }
 
-.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList .ingredientsListItem img {
+.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList .ingredientsListItem {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "ingredientsListItemName ingredientsListItemQuantity" "ingredientsListItemPic ingredientsListItemPic";
+}
+
+.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList .ingredientsListItem .ingredientsListItemName {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: ingredientsListItemName;
+}
+
+.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList .ingredientsListItem .ingredientsListItemQuantity {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: ingredientsListItemQuantity;
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.search-body .popup-box .detailedInfo .foodIngredients .ingredientsList .ingredientsListItem .ingredientsListItemPic {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: ingredientsListItemPic;
   width: 150px;
   height: auto;
 }
@@ -608,10 +634,8 @@ p {
 
 .search-body .cardDisplayFull {
   width: 100%;
+  height: 100vh;
   left: 0;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
   border-radius: 0;
   padding-right: 50px;
   padding-bottom: 30px;
