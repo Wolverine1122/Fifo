@@ -463,9 +463,22 @@ p {
     }
     .detailedInfo {
       grid-area: detailedInfo;
-      padding: 30px 20px 0;
+      padding: 10px 20px 0;
+
+      .foodAttributesList {
+
+        .foodAttributesListItem {
+          font-size: 85%;
+          display: inline-block;
+          background-color: $orange;
+          color: $milky-white;
+          border-radius: 20px;
+          padding: 2px 5px;
+        }
+      }
 
       .foodSummaryDiv {
+        margin-top: 30px;
         .toggleTruncateClick {
           color: $orange;
         }
@@ -526,7 +539,7 @@ p {
       padding: 15px 0 0 50px;
     }
     .detailedInfo {
-      padding: 30px 20px 0 50px;
+      padding: 10px 20px 0 50px;
     }
   }
 

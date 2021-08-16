@@ -39,8 +39,16 @@ function changeCardDisplayDimension() {
 
 // 1. Simple mode, it styles document scrollbar:
 $(function() {  
-  $("html").niceScroll();
-  $(".popup-box").niceScroll();
+  $("html").niceScroll({
+    cursorcolor: "hsl(31, 94%, 60%)",
+    cursorwidth: "12px",
+    hwacceleration: true
+  });
+  $(".popup-box").niceScroll({
+    cursorcolor: "hsl(31, 94%, 60%)",
+    cursorwidth: "10px",
+    hwacceleration: true
+  });
 });
 
 $(".popup-box").scroll(function(){

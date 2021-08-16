@@ -31,6 +31,11 @@
         <p class="time-to-cook-food"><%= timeToCookFood %></p>
       </aside>
       <div class="detailedInfo">
+        <div class="foodAttributesList">
+          <% for (let j = 0; j < foodAttributesListNumber; j++) {%>
+            <div class="foodAttributesListItem"> <%= foodAttribute %>  </div>
+          <% } %>  
+        </div>
         <div class="foodSummaryDiv">
           <h5>Summary</h5> 
           <p class="foodSummary"> <%- foodSummary %>  </p>
@@ -46,6 +51,17 @@
                   <img src="/img/example-image.jpg" alt="" class="ingredientsListItemPic">
                 </div>
             <% } %>  
+          </div>
+        </div>
+        <div class="foodEquipment">
+          <h5>Equipment</h5>
+          <div class="foodEquipmentList">
+            <% for (let j=0; j < foodEquipmentListItemsNumber; j++) {%>
+              <div class="foodEquipmentListItem">
+                <p class="foodEquipmentListItemName"><%= foodEquipmentListItemName %></p>
+                <img src="/img/example-image.jpg" alt="" class="foodEquipmentListItemPic">
+              </div>
+          <% } %>  
           </div>
         </div>
       </div>

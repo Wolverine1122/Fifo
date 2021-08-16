@@ -573,7 +573,20 @@ p {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: detailedInfo;
-  padding: 30px 20px 0;
+  padding: 10px 20px 0;
+}
+
+.search-body .popup-box .detailedInfo .foodAttributesList .foodAttributesListItem {
+  font-size: 85%;
+  display: inline-block;
+  background-color: #e47907;
+  color: #f4ede6;
+  border-radius: 20px;
+  padding: 2px 5px;
+}
+
+.search-body .popup-box .detailedInfo .foodSummaryDiv {
+  margin-top: 30px;
 }
 
 .search-body .popup-box .detailedInfo .foodSummaryDiv .toggleTruncateClick {
@@ -650,7 +663,7 @@ p {
 }
 
 .search-body .cardDisplayFull .detailedInfo {
-  padding: 30px 20px 0 50px;
+  padding: 10px 20px 0 50px;
 }
 
 .search-body .logo {
